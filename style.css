@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CONFIGURAÇÕES GERAIS E VARIÁVEIS (Identidade Visual)
+   CONFIGURACOES GERAIS E VARIAVEIS (Identidade Visual)
    ========================================================================== */
 :root {
     --bg-principal: #0b0f19;       /* Fundo ultra escuro moderno */
@@ -30,7 +30,7 @@ body {
 }
 
 /* ==========================================================================
-   CABEÇALHO (Header)
+   CABECALHO (Header)
    ========================================================================== */
 header {
     text-align: center;
@@ -54,7 +54,7 @@ header p {
 }
 
 /* ==========================================================================
-   SEÇÃO INTRODUTÓRIA (Contextualização)
+   SECAO INTRODUTORIA (Contextualizacao)
    ========================================================================== */
 .introducao {
     max-width: 800px;
@@ -84,7 +84,7 @@ header p {
 }
 
 /* ==========================================================================
-   BOTÕES DE FILTRO
+   BOTOES DE FILTRO
    ========================================================================== */
 .filtros {
     display: flex;
@@ -153,7 +153,7 @@ button:hover {
     line-height: 1.6;
 }
 
-/* Customização Dinâmica (Bordas e Cores dos Cards) */
+/* Customizacao Dinamica (Bordas e Cores dos Cards) */
 .card-dilema.problema {
     border-top: 4px solid var(--vermelho-problema);
 }
@@ -169,7 +169,7 @@ button:hover {
 }
 
 /* ==========================================================================
-   RODAPÉ (Footer)
+   RODAPE (Footer)
    ========================================================================== */
 footer {
     width: 100%;
