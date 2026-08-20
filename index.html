@@ -1,15 +1,80 @@
-<!-- Botões de filtro -->
-<button onclick="filtrarConteudo('todos')">Ver Tudo</button>
-<button onclick="filtrarConteudo('problema')">Problemas</button>
-<button onclick="filtrarConteudo('solucao')">Soluções</button>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilemas Digitais - Conectados com Consciência</title>
+    <!-- Ligação com o arquivo CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<!-- Exemplos de Cards -->
-<div class="card-dilema problema">
-    <h3>Uso Excessivo de Telas</h3>
-    <p>Problema: Ansiedade e falta de sono nos jovens.</p>
-</div>
+    <header>
+        <h1>Dilemas Digitais da Atualidade</h1>
+        <p>Uma análise crítica feita por alunos do 3º ano sobre o impacto da tecnologia nas nossas vidas.</p>
+    </header>
 
-<div class="card-dilema solucao">
-    <h3>Higiene do Sono</h3>
-    <p>Solução: Ativar o modo não perturbe 1h antes de dormir.</p>
-</div>
+    <!-- Botões de Filtro controlados pelo script.js -->
+    <div class="filtros">
+        <button onclick="filtrarConteudo('todos')">👁️ Ver Tudo</button>
+        <button onclick="filtrarConteudo('problema')">⚠️ Problemas</button>
+        <button onclick="filtrarConteudo('solucao')">💡 Soluções</button>
+    </div>
+
+    <!-- Container dos Cards organizados pelo Grid -->
+    <main class="container-cards">
+
+        <!-- DILEMA 1: SAÚDE MENTAL -->
+        <div class="card-dilema problema">
+            <h3>⚠️ Vício e Fadiga de Telas</h3>
+            <p><strong>O Problema:</strong> O uso excessivo de redes sociais ativa ciclos de dopamina que geram dependência, insônia, ansiedade e a sensação de estar perdendo algo sempre (FOMO).</p>
+        </div>
+
+        <div class="card-dilema solucao">
+            <h3>💡 Desintoxicação Digital</h3>
+            <p><strong>A Solução:</strong> Estabelecer "zonas livres de telas" (como o quarto antes de dormir), usar aplicativos de limite de tempo e focar em hobbies longe do celular.</p>
+        </div>
+
+        <!-- DILEMA 2: INFORMAÇÃO -->
+        <div class="card-dilema problema">
+            <h3>⚠️ Fake News e Desinformação</h3>
+            <p><strong>O Problema:</strong> Notícias falsas se espalham até 6 vezes mais rápido que as verdadeiras nas redes, manipulando opiniões, eleições e gerando pânico social.</p>
+        </div>
+
+        <div class="card-dilema solucao">
+            <h3>💡 Letramento Digital</h3>
+            <p><strong>A Solução:</strong> Desenvolver o pensamento crítico: checar a fonte, verificar em agências de checagem (Fato ou Fake) e nunca compartilhar apenas pelo título.</p>
+        </div>
+
+        <!-- DILEMA 3: ALGORITMOS -->
+        <div class="card-dilema problema">
+            <h3>⚠️ Bolhas de Filtro</h3>
+            <p><strong>O Problema:</strong> Os algoritmos de recomendação só mostram conteúdos que você já concorda. Isso elimina o contraditório e aumenta a polarização extrema na sociedade.</p>
+        </div>
+
+        <div class="card-dilema solucao">
+            <h3>💡 Diversificação de Fontes</h3>
+            <p><strong>A Solução:</strong> Buscar ativamente pontos de vista diferentes, limpar o histórico de buscas e interagir com temas variados para "enganar" o algoritmo.</p>
+        </div>
+
+        <!-- DILEMA 4: PRIVACIDADE -->
+        <div class="card-dilema problema">
+            <h3>⚠️ Capitalismo de Vigilância</h3>
+            <p><strong>O Problema:</strong> Grandes empresas coletam, mapeiam e vendem nossos dados pessoais e de comportamento a cada clique, transformando nossa privacidade em mercadoria.</p>
+        </div>
+
+        <div class="card-dilema solucao">
+            <h3>💡 Pegada Digital Segura</h3>
+            <p><strong>A Solução:</strong> Utilizar navegadores focados em privacidade (como Brave ou DuckDuckGo), gerenciar permissões de apps e ler os termos de privacidade antes de aceitar tudo.</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Trabalho de Tecnologia & Sociedade | Desenvolvido pelo 3º Ano</p>
+    </footer>
+
+    <!-- Ligação com o arquivo JS (obrigatório estar no fim do body para funcionar) -->
+    <script src="script.js"></script>
+</body>
+</html>
