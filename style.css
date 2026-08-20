@@ -1,89 +1,181 @@
-/* Configurações Gerais e Cores */
+/* ==========================================================================
+   CONFIGURAÇÕES GERAIS E VARIÁVEIS (Identidade Visual)
+   ========================================================================== */
+:root {
+    --bg-principal: #0b0f19;       /* Fundo ultra escuro moderno */
+    --bg-card: #151f32;            /* Fundo dos blocos e cards */
+    --texto-claro: #f8fafc;        /* Texto principal */
+    --texto-mutado: #94a3b8;       /* Texto secundário/legendas */
+    --azul-destaque: #38bdf8;      /* Cor dos links e títulos */
+    --vermelho-problema: #f43f5e;  /* Alerta para os problemas */
+    --verde-solucao: #10b981;     /* Sucesso para as soluções */
+    --transicao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
-    background-color: #0f172a; /* Azul escuro tecnológico */
-    color: #f8fafc; /* Texto claro */
-    padding: 20px;
+    background-color: var(--bg-principal);
+    color: var(--texto-claro);
+    line-height: 1.6;
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-h1 {
-    margin-bottom: 20px;
-    color: #38bdf8; /* Azul brilhante para o título */
+/* ==========================================================================
+   CABEÇALHO (Header)
+   ========================================================================== */
+header {
+    text-align: center;
+    margin: 60px 0 40px 0;
+    max-width: 800px;
 }
 
-/* Container dos Botões de Filtro */
+header h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    background: linear-gradient(to right, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+}
+
+header p {
+    color: var(--texto-mutado);
+    font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   SEÇÃO INTRODUTÓRIA (Contextualização)
+   ========================================================================== */
+.introducao {
+    max-width: 800px;
+    background-color: var(--bg-card);
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 50px;
+    border: 1px solid #233554;
+}
+
+.introducao h2 {
+    color: var(--azul-destaque);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.introducao p {
+    color: #cbd5e1;
+    font-size: 1.05rem;
+    margin-bottom: 15px;
+}
+
+.introducao p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   BOTÕES DE FILTRO
+   ========================================================================== */
 .filtros {
-    margin-bottom: 30px;
     display: flex;
-    gap: 10px;
+    gap: 12px;
+    margin-bottom: 40px;
+    background-color: var(--bg-card);
+    padding: 8px;
+    border-radius: 30px;
+    border: 1px solid #233554;
 }
 
-/* Estilo dos Botões */
 button {
-    background-color: #1e293b;
-    color: #f8fafc;
-    border: 2px solid #38bdf8;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 8px;
+    background: transparent;
+    color: var(--texto-claro);
+    border: none;
+    padding: 10px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 20px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--transicao);
 }
 
 button:hover {
-    background-color: #38bdf8;
-    color: #0f172a;
-    transform: translateY(-2px); /* Efeito de flutuar ao passar o mouse */
+    background-color: #233554;
+    color: var(--azul-destaque);
 }
 
-/* Grid que organiza os Cards lado a lado */
+/* ==========================================================================
+   GRID E CARDS DE DILEMAS
+   ========================================================================== */
 .container-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
     width: 100%;
     max-width: 1200px;
+    margin-bottom: 80px;
 }
 
-/* Estilo Base dos Cards */
 .card-dilema {
-    background-color: #1e293b;
-    padding: 20px;
-    border-radius: 12px;
-    border-left: 5px solid #64748b; /* Borda padrão cinza */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
+    background-color: var(--bg-card);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #233554;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: var(--transicao);
+    display: flex;
+    flex-direction: column;
 }
 
 .card-dilema:hover {
-    transform: scale(1.02); /* Aumenta levemente no hover */
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
 .card-dilema h3 {
-    margin-bottom: 10px;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    font-weight: 700;
 }
 
 .card-dilema p {
     color: #cbd5e1;
-    font-size: 0.95rem;
-    line-height: 1.5;
+    font-size: 0.98rem;
+    line-height: 1.6;
 }
 
-/* Cores das Bordas para identificar Problemas vs Soluções */
+/* Customização Dinâmica (Bordas e Cores dos Cards) */
 .card-dilema.problema {
-    border-left-color: #ef4444; /* Borda Vermelha para Problemas */
+    border-top: 4px solid var(--vermelho-problema);
+}
+.card-dilema.problema h3 {
+    color: var(--vermelho-problema);
 }
 
 .card-dilema.solucao {
-    border-left-color: #22c55e; /* Borda Verde para Soluções */
+    border-top: 4px solid var(--verde-solucao);
+}
+.card-dilema.solucao h3 {
+    color: var(--verde-solucao);
+}
+
+/* ==========================================================================
+   RODAPÉ (Footer)
+   ========================================================================== */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid #233554;
+    color: var(--texto-mutado);
+    font-size: 0.9rem;
 }
