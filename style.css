@@ -44,6 +44,7 @@ header h1 {
     letter-spacing: -0.05em;
     background: linear-gradient(to right, #38bdf8, #818cf8);
     -webkit-background-clip: text;
+    background-clip: text; /* Correção da linha 46: Adicionado padrão para compatibilidade */
     -webkit-text-fill-color: transparent;
     margin-bottom: 12px;
 }
