@@ -9,7 +9,7 @@
     --azul-destaque: #38bdf8;      /* Cor dos links e títulos */
     --vermelho-problema: #f43f5e;  /* Alerta para os problemas */
     --verde-solucao: #10b981;     /* Sucesso para as soluções */
-    --transicao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transicao: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
 
 * {
@@ -30,7 +30,7 @@ body {
 }
 
 /* ==========================================================================
-   CABECALHO (Header)
+   CABECALHO E INTRODUÇÃO
    ========================================================================== */
 header {
     text-align: center;
@@ -44,7 +44,7 @@ header h1 {
     letter-spacing: -0.05em;
     background: linear-gradient(to right, #38bdf8, #818cf8);
     -webkit-background-clip: text;
-    background-clip: text; /* Correção da linha 46: Adicionado padrão para compatibilidade */
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 12px;
 }
@@ -54,9 +54,6 @@ header p {
     font-size: 1.1rem;
 }
 
-/* ==========================================================================
-   SECAO INTRODUTORIA (Contextualizacao)
-   ========================================================================== */
 .introducao {
     max-width: 800px;
     background-color: var(--bg-card);
@@ -71,7 +68,6 @@ header p {
     color: var(--azul-destaque);
     font-size: 1.5rem;
     margin-bottom: 15px;
-    font-weight: 700;
 }
 
 .introducao p {
@@ -80,8 +76,18 @@ header p {
     margin-bottom: 15px;
 }
 
-.introducao p:last-child {
-    margin-bottom: 0;
+/* Links do Texto da Introdução */
+.introducao a {
+    color: var(--azul-destaque);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px dashed var(--azul-destaque);
+    transition: all 0.2s ease;
+}
+
+.introducao a:hover {
+    color: #818cf8;
+    border-bottom-color: #818cf8;
 }
 
 /* ==========================================================================
@@ -106,7 +112,7 @@ button {
     font-weight: 600;
     border-radius: 20px;
     cursor: pointer;
-    transition: var(--transicao);
+    transition: all 0.2s ease;
 }
 
 button:hover {
@@ -115,7 +121,7 @@ button:hover {
 }
 
 /* ==========================================================================
-   GRID E CARDS DE DILEMAS
+   GRID E ESTRUTURA DOS FLIP CARDS (Cards que Giram)
    ========================================================================== */
 .container-cards {
     display: grid;
@@ -126,47 +132,99 @@ button:hover {
     margin-bottom: 80px;
 }
 
+/* Container do efeito de rotação (Efeito Perspectiva 3D) */
 .card-dilema {
-    background-color: var(--bg-card);
-    padding: 30px;
+    background-color: transparent;
+    height: 280px; /* Altura fixa necessária para o efeito de rotação */
+    perspective: 1000px; 
+    cursor: pointer;
+}
+
+/* Bloco interno que de fato vai rotacionar */
+.card-interno {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: var(--transicao);
+    transform-style: preserve-3d;
+}
+
+/* Classe controlada pelo JavaScript para girar o card */
+.card-dilema.girado .card-interno {
+    transform: rotateY(180deg);
+}
+
+/* Configurações básicas comuns tanto para a frente quanto para o verso */
+.card-frente, .card-verso {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     border-radius: 16px;
+    padding: 30px;
+    background-color: var(--bg-card);
     border: 1px solid #233554;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: var(--transicao);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
-.card-dilema:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+/* Estilo da Frente (Problema) */
+.card-frente {
+    border-top: 5px solid var(--vermelho-problema);
 }
 
-.card-dilema h3 {
-    font-size: 1.3rem;
-    margin-bottom: 12px;
-    font-weight: 700;
-}
-
-.card-dilema p {
-    color: #cbd5e1;
-    font-size: 0.98rem;
-    line-height: 1.6;
-}
-
-/* Customizacao Dinamica (Bordas e Cores dos Cards) */
-.card-dilema.problema {
-    border-top: 4px solid var(--vermelho-problema);
-}
-.card-dilema.problema h3 {
+.card-frente h3 {
     color: var(--vermelho-problema);
+    font-size: 1.3rem;
 }
 
-.card-dilema.solucao {
-    border-top: 4px solid var(--verde-solucao);
+.card-frente p {
+    color: #cbd5e1;
+    margin-top: 10px;
+    flex-grow: 1;
 }
-.card-dilema.solucao h3 {
+
+.ajuda-clique {
+    font-size: 0.85rem;
+    color: var(--texto-mutado);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+/* Estilo do Verso (Solução) - Começa invertido em 180 graus */
+.card-verso {
+    border-top: 5px solid var(--verde-solucao);
+    transform: rotateY(180deg);
+}
+
+.card-verso h3 {
     color: var(--verde-solucao);
+    font-size: 1.3rem;
+}
+
+.card-verso p {
+    color: #cbd5e1;
+    margin-top: 10px;
+    flex-grow: 1;
+}
+
+/* Links dentro do Verso (Soluções) */
+.card-verso a {
+    display: inline-block;
+    color: var(--verde-solucao);
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: transform 0.2s ease;
+}
+
+.card-verso a:hover {
+    transform: translateX(5px); /* Move levemente o link para a direita no hover */
 }
 
 /* ==========================================================================

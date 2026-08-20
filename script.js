@@ -1,44 +1,54 @@
 /**
- * Função responsável por filtrar os dilemas digitais (Problemas e Soluções)
- * Adiciona animações suaves de transição ao ocultar ou exibir os cards.
+ * Função para girar individualmente o card (Efeito Flip 3D) ao clicar.
+ * @param {HTMLElement} card - O elemento do card que foi clicado.
+ */
+function girarCard(card) {
+    // Liga ou desliga a classe 'girado' que executa a rotação CSS de 180 graus
+    card.classList.toggle('girado');
+}
+
+/**
+ * Função para filtrar os dilemas digitais com base nos botões.
+ * Além de esconder/mostrar, ela vira o card automaticamente para o lado certo.
  * @param {string} categoria - A categoria escolhida ('todos', 'problema' ou 'solucao')
  */
 function filtrarConteudo(categoria) {
-    // Seleciona todos os cards da página
     const cards = document.querySelectorAll('.card-dilema');
 
     cards.forEach(card => {
-        // Verifica se o card pertence à categoria selecionada ou se 'todos' foi clicado
-        const deveMostrar = categoria === 'todos' || card.classList.contains(categoria);
-
-        if (deveMostrar) {
-            // 1. Garante que o elemento volte a existir na estrutura da página
-            card.style.display = 'flex';
+        // Como o card agora contém AMBOS (problema e solução), ele sempre deve aparecer
+        // A filtragem inteligente agora controla qual LADO do card fica virado para o usuário
+        
+        if (categoria === 'todos') {
+            // Mostra o card e desvira para o lado inicial (Problema/Frente)
+            card.style.display = 'block';
+            card.classList.remove('girado');
             
-            // 2. Pequeno delay para o navegador processar o display antes de rodar a animação
-            setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'scale(1)';
-            }, 50);
-        } else {
-            // 3. Inicia o efeito de sumir (fade-out e diminuição de tamanho)
-            card.style.opacity = '0';
-            card.style.transform = 'scale(0.9)';
+            setTimeout(() => { card.style.opacity = '1'; }, 50);
             
-            // 4. Aguarda o fim da animação do CSS (300ms) para de fato esconder o bloco
-            setTimeout(() => {
-                card.style.display = 'none';
-            }, 300);
+        } else if (categoria === 'problema') {
+            // Mostra o card e garante que ele exiba o lado da Frente (Problema)
+            card.style.display = 'block';
+            card.classList.remove('girado'); // remove o giro para mostrar a frente
+            
+            setTimeout(() => { card.style.opacity = '1'; }, 50);
+            
+        } else if (categoria === 'solucao') {
+            // Mostra o card e força ele a girar para exibir o Verso (Solução)
+            card.style.display = 'block';
+            card.classList.add('girado'); // adiciona o giro para mostrar o verso
+            
+            setTimeout(() => { card.style.opacity = '1'; }, 50);
         }
     });
 }
 
-// Garante que todos os cards comecem visíveis e com as propriedades de transição configuradas
+// Inicialização assim que a página carrega por completo
 document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll('.card-dilema');
     cards.forEach(card => {
-        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        // Injeta as transições de opacidade de forma limpa
+        card.style.transition = 'opacity 0.4s ease';
         card.style.opacity = '1';
-        card.style.transform = 'scale(1)';
     });
 });
