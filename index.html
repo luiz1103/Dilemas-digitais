@@ -14,69 +14,97 @@
         <p>Um projeto de conscientização e cidadania digital desenvolvido pelo 3º Ano.</p>
     </header>
 
-    <!-- NOVA SEÇÃO: Introdução Teórica sobre o Tema -->
+    <!-- Seção Introdução Teórica -->
     <section class="introducao">
         <h2>O que são os Dilemas Digitais?</h2>
         <p>
             Viver na era da informação traz vantagens inegáveis, mas também nos coloca diante de impasses éticos e sociais complexos. Os <strong>dilemas digitais</strong> surgem quando o avanço acelerado da tecnologia colide com os direitos humanos, a saúde mental, a privacidade e a própria democracia. 
         </p>
         <p>
-            Como estudantes do Ensino Médio, percebemos que o problema não é a tecnologia em si, mas a forma como ela é desenhada para capturar nossa atenção e comercializar nossos dados. Abaixo, mapeamos os principais desafios enfrentados pela nossa geração e propomos caminhos práticos para solucioná-los.
+            Como estudantes do Ensino Médio, percebemos que o problema não é a tecnologia em si, mas a forma como ela é desenhada para capturar nossa atenção. Para entender melhor, recomendamos assistir ao documentário <a href="https://netflix.com" target="_blank">O Dilema das Redes</a> ou ler o guia de <a href="https://www.gov.br" target="_blank">Cidadania Digital do Governo Federal</a>. Mapeamos abaixo os principais desafios: clique nos cards para girar e ver a solução!
         </p>
     </section>
 
     <!-- Botões de Filtro controlados pelo script.js -->
     <div class="filtros">
         <button onclick="filtrarConteudo('todos')">👁️ Ver Tudo</button>
-        <button onclick="filtrarConteudo('problema')">⚠️ Problemas</button>
-        <button onclick="filtrarConteudo('solucao')">💡 Soluções</button>
+        <button onclick="filtrarConteudo('problema')">⚠️ Ver Problemas</button>
+        <button onclick="filtrarConteudo('solucao')">💡 Ver Soluções</button>
     </div>
 
-    <!-- Container dos Cards (Problemas e Soluções) -->
+    <!-- Container dos Cards que giram (Flip Cards) -->
     <main class="container-cards">
 
         <!-- DILEMA 1: SAÚDE MENTAL -->
-        <div class="card-dilema problema">
-            <h3>⚠️ Vício e Fadiga de Telas</h3>
-            <p><strong>O Problema:</strong> O uso excessivo de redes sociais ativa ciclos de dopamina que geram dependência, insônia, ansiedade e a sensação de estar perdendo algo sempre (FOMO).</p>
-        </div>
-
-        <div class="card-dilema solucao">
-            <h3>💡 Desintoxicação Digital</h3>
-            <p><strong>A Solução:</strong> Estabelecer "zonas livres de telas" (como o quarto antes de dormir), usar aplicativos de limite de tempo e focar em hobbies longe do celular.</p>
+        <div class="card-dilema problema solucao" onclick="girarCard(this)">
+            <div class="card-interno">
+                <!-- FRENTE: PROBLEMA -->
+                <div class="card-frente">
+                    <h3>⚠️ Vício e Fadiga de Telas</h3>
+                    <p><strong>O Problema:</strong> O uso excessivo de redes sociais ativa ciclos de dopamina que geram dependência, insônia, ansiedade e a sensação de FOMO.</p>
+                    <span class="ajuda-clique">🔄 Clique para ver a solução</span>
+                </div>
+                <!-- VERSO: SOLUÇÃO -->
+                <div class="card-verso">
+                    <h3>💡 Desintoxicação Digital</h3>
+                    <p><strong>A Solução:</strong> Estabelecer "zonas livres de telas", usar aplicativos de limite de tempo e focar em hobbies longe do celular.</p>
+                    <p><a href="https://cnnbrasil.com.br" target="_blank" onclick="event.stopPropagation();">Saiba mais sobre Detox Digital &rarr;</a></p>
+                </div>
+            </div>
         </div>
 
         <!-- DILEMA 2: INFORMAÇÃO -->
-        <div class="card-dilema problema">
-            <h3>⚠️ Fake News e Desinformação</h3>
-            <p><strong>O Problema:</strong> Notícias falsas se espalham até 6 vezes mais rápido que as verdadeiras nas redes, manipulando opiniões, eleições e gerando pânico social.</p>
-        </div>
-
-        <div class="card-dilema solucao">
-            <h3>💡 Letramento Digital</h3>
-            <p><strong>A Solução:</strong> Desenvolver o pensamento crítico: checar a fonte, verificar em agências de checagem (Fato ou Fake) e nunca compartilhar apenas pelo título.</p>
+        <div class="card-dilema problema solucao" onclick="girarCard(this)">
+            <div class="card-interno">
+                <!-- FRENTE: PROBLEMA -->
+                <div class="card-frente">
+                    <h3>⚠️ Fake News e Desinformação</h3>
+                    <p><strong>O Problema:</strong> Notícias falsas se espalham até 6 vezes mais rápido que as verdadeiras nas redes, manipulando opiniões e gerando pânico social.</p>
+                    <span class="ajuda-clique">🔄 Clique para ver a solução</span>
+                </div>
+                <!-- VERSO: SOLUÇÃO -->
+                <div class="card-verso">
+                    <h3>💡 Letramento Digital</h3>
+                    <p><strong>A Solução:</strong> Desenvolver o pensamento crítico: checar a fonte e verificar o conteúdo em agências oficiais de checagem.</p>
+                    <p><a href="https://globo.com" target="_blank" onclick="event.stopPropagation();">Acesse o Fato ou Fake &rarr;</a></p>
+                </div>
+            </div>
         </div>
 
         <!-- DILEMA 3: ALGORITMOS -->
-        <div class="card-dilema problema">
-            <h3>⚠️ Bolhas de Filtro</h3>
-            <p><strong>O Problema:</strong> Os algoritmos de recomendação só mostram conteúdos que você já concorda. Isso elimina o contraditório e aumenta a polarização extrema na sociedade.</p>
-        </div>
-
-        <div class="card-dilema solucao">
-            <h3>💡 Diversificação de Fontes</h3>
-            <p><strong>A Solução:</strong> Buscar ativamente pontos de vista diferentes, limpar o histórico de buscas e interagir com temas variados para "enganar" o algoritmo.</p>
+        <div class="card-dilema problema solucao" onclick="girarCard(this)">
+            <div class="card-interno">
+                <!-- FRENTE: PROBLEMA -->
+                <div class="card-frente">
+                    <h3>⚠️ Bolhas de Filtro</h3>
+                    <p><strong>O Problema:</strong> Os algoritmos de recomendação só mostram conteúdos que você já concorda. Isso elimina o contraditório e aumenta a polarização.</p>
+                    <span class="ajuda-clique">🔄 Clique para ver a solução</span>
+                </div>
+                <!-- VERSO: SOLUÇÃO -->
+                <div class="card-verso">
+                    <h3>💡 Diversificação de Fontes</h3>
+                    <p><strong>A Solução:</strong> Buscar ativamente pontos de vista diferentes, limpar o histórico de buscas e interagir com temas variados.</p>
+                    <p><a href="https://wikipedia.org" target="_blank" onclick="event.stopPropagation();">Entenda as Bolhas de Filtro &rarr;</a></p>
+                </div>
+            </div>
         </div>
 
         <!-- DILEMA 4: PRIVACIDADE -->
-        <div class="card-dilema problema">
-            <h3>⚠️ Capitalismo de Vigilância</h3>
-            <p><strong>O Problema:</strong> Grandes empresas coletam, mapeiam e vendem nossos dados pessoais e de comportamento a cada clique, transformando nossa privacidade em mercadoria.</p>
-        </div>
-
-        <div class="card-dilema solucao">
-            <h3>💡 Pegada Digital Segura</h3>
-            <p><strong>A Solução:</strong> Utilizar navegadores focados em privacidade (como Brave ou DuckDuckGo), gerenciar permissões de apps e ler os termos de privacidade antes de aceitar tudo.</p>
+        <div class="card-dilema problema solucao" onclick="girarCard(this)">
+            <div class="card-interno">
+                <!-- FRENTE: PROBLEMA -->
+                <div class="card-frente">
+                    <h3>⚠️ Capitalismo de Vigilância</h3>
+                    <p><strong>O Problema:</strong> Grandes empresas coletam, mapeiam e vendem nossos dados pessoais e de comportamento a cada clique feito na internet.</p>
+                    <span class="ajuda-clique">🔄 Clique para ver a solução</span>
+                </div>
+                <!-- VERSO: SOLUÇÃO -->
+                <div class="card-verso">
+                    <h3>💡 Pegada Digital Segura</h3>
+                    <p><strong>A Solução:</strong> Utilizar navegadores focados em privacidade, gerenciar permissões de aplicativos e ler as políticas de privacidade.</p>
+                    <p><a href="https://www.gov.br" target="_blank" onclick="event.stopPropagation();">Consulte a ANPD / LGPD &rarr;</a></p>
+                </div>
+            </div>
         </div>
 
     </main>
